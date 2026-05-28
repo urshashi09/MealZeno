@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router();
 
 import authMiddleware from '../middleware/auth.js';
-import * as mealplanController from '../controllers/mealplanController.js'
+import * as mealplanController from '../controllers/mealPlanController.js'
 
 router.use(authMiddleware)
 
