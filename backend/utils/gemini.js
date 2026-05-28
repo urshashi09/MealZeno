@@ -64,7 +64,7 @@ const callGroqWithFallback = async (params) => {
             return response;
         } catch (error) {
             lastError = error;
-            // Fallback if quota reached OR model not found/accessible
+            
             const isModelMissing = error?.status === 404 || error?.code === 'model_not_found' || error?.message?.includes('does not exist');
             if (isQuotaError(error) || isModelMissing) {
                 console.warn(`[Groq] ${modelId} failed (${isModelMissing ? 'Not Found' : 'Quota Exceeded'}), trying next model...`);
@@ -77,15 +77,15 @@ const callGroqWithFallback = async (params) => {
 };
 
 const isQuotaError = (error) => {
-    // Check numeric status code
-    if (error?.status === 429 || error?.code === 429) return true;
-    if (error?.status === 413) return true; // Request too large (often happens on free tiers)
     
-    // Check string-based status
+    if (error?.status === 429 || error?.code === 429) return true;
+    if (error?.status === 413) return true; 
+    
+    
     if (error?.status === 'RESOURCE_EXHAUSTED') return true;
     if (error?.code === 'rate_limit_exceeded') return true;
     
-    // Check message string broadly
+    
     const message = [
         error?.message || '',
         error?.response?.data?.message || '',

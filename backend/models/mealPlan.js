@@ -43,7 +43,7 @@ class MealPlan {
 
     static async getWeeklyPlan(userId, weekStartDate) {
         const endDate = new Date(weekStartDate);
-        endDate.setDate(endDate.getDate() + 6); // Get the end date of the week
+        endDate.setDate(endDate.getDate() + 6); 
         return await this.findByDateRange(userId, weekStartDate, endDate);
     }
 

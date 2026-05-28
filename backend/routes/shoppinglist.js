@@ -11,13 +11,13 @@ router.use(authMiddleware)
 router.get("/", shoppinglistController.getShoppingList)
 router.get("/download", shoppinglistController.downloadShoppingListPDF)
 
-// Static routes MUST come before /:id wildcard routes
+
 router.post("/generate", shoppinglistController.generateFromMealPlan)
 router.post("/add-to-pantry", shoppinglistController.addCheckedToPantry)
 router.delete("/clear/all", shoppinglistController.clearAll)
 router.delete("/clear/checked", shoppinglistController.clearChecked)
 
-// Wildcard routes last
+
 router.post("/", shoppinglistController.addItem)
 router.put("/:id/toggle", shoppinglistController.toggleChecked)
 router.put("/:id", shoppinglistController.updateItem)

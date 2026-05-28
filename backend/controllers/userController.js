@@ -40,7 +40,7 @@ export const updatePreferences = async (req, res,next) => {
         const userId = req.user.id;
         const body = req.body;
 
-        // Normalize measurement field — frontend may send either name
+        
         const normalized = {
             ...body,
             measurement_units: body.measurement_units || body.measurement_unit || 'metric'

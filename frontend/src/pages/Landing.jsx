@@ -19,7 +19,7 @@ const Landing = () => {
                         <a className="text-[#F45B00] border-b-2 border-[#F45B00] pb-1 font-headline-md text-sm font-bold tracking-tight" href="#features">Features</a>
                         <a className="text-slate-600 hover:text-[#F45B00] transition-colors font-headline-md text-sm font-bold tracking-tight" href="#how-it-works">How it Works</a>
                         <Link className="text-slate-600 hover:text-[#F45B00] transition-colors font-headline-md text-sm font-bold tracking-tight" to="/login">Login</Link>
-                        <Link className="text-slate-600 hover:text-[#F45B00] transition-colors font-headline-md text-sm font-bold tracking-tight" to="/signup">Register</Link>
+                        
                     </nav>
                     <Link
                         to="/signup"
@@ -40,8 +40,8 @@ const Landing = () => {
                                 Master Your Kitchen <br /><span className="text-[#F45B00]">with AI</span>
                             </h1>
                             <p className="font-body-lg text-lg text-on-surface-variant max-w-lg leading-relaxed">
-                                Turn your pantry into a professional kitchen. Reduce waste, eat better, and automate your meal planning with the world's most intelligent culinary assistant.
-                            </p>
+From pantry to plate — instantly. <br />
+Generate smart recipes, cut food waste, and make cooking effortless with AI.                          </p>
                             <div className="flex flex-col sm:flex-row gap-6 mt-4 w-full sm:w-auto">
                                 <Link
                                     to="/signup"

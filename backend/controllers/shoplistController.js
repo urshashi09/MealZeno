@@ -192,7 +192,7 @@ export const downloadShoppingListPDF = async (req, res, next) => {
             });
         }
 
-        // Group unchecked items by category
+        
         const grouped = {};
         unchecked.forEach(item => {
             const cat = item.category || 'Other';
@@ -200,20 +200,20 @@ export const downloadShoppingListPDF = async (req, res, next) => {
             grouped[cat].push(item);
         });
 
-        // Build PDF
+        
         const doc = new PDFDocument({ margin: 50, size: 'A4' });
 
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', 'attachment; filename=shopping-list.pdf');
         doc.pipe(res);
 
-        // ── Title ──
+        
         doc.font('Helvetica-Bold')
             .fontSize(24)
             .fillColor('#1a1a1a')
             .text('Shopping List', { align: 'left' });
 
-        // ── Date subtitle ──
+        
         const dateStr = new Date().toLocaleDateString('en-US', {
             weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
         });
@@ -223,7 +223,7 @@ export const downloadShoppingListPDF = async (req, res, next) => {
             .fillColor('#666666')
             .text(dateStr, { align: 'left' });
 
-        // ── Divider ──
+        
         doc.moveDown(0.8)
             .moveTo(50, doc.y)
             .lineTo(545, doc.y)
@@ -233,10 +233,10 @@ export const downloadShoppingListPDF = async (req, res, next) => {
 
         doc.moveDown(0.8);
 
-        // ── Categories & Items ──
+        
         const categories = Object.keys(grouped).sort();
         categories.forEach((category, catIndex) => {
-            // Category heading
+            
             doc.font('Helvetica-Bold')
                 .fontSize(13)
                 .fillColor('#2d6a4f')
@@ -244,7 +244,7 @@ export const downloadShoppingListPDF = async (req, res, next) => {
 
             doc.moveDown(0.4);
 
-            // Items under this category
+            
             grouped[category].forEach(item => {
                 const qty  = item.quantity != null ? item.quantity : '';
                 const unit = item.unit ? ` ${item.unit}` : '';
@@ -252,7 +252,7 @@ export const downloadShoppingListPDF = async (req, res, next) => {
 
                 doc.font('Helvetica').fontSize(11).fillColor('#1a1a1a');
 
-                // Draw checkbox square
+                
                 const x = 50;
                 const y = doc.y;
                 doc.rect(x, y + 1, 10, 10)
@@ -260,7 +260,7 @@ export const downloadShoppingListPDF = async (req, res, next) => {
                     .lineWidth(0.8)
                     .stroke();
 
-                // Item name (continued if there's a detail)
+                
                 doc.text(`  ${item.ingredient_name}`, x + 16, y, { continued: detail !== '' });
                 if (detail) {
                     doc.font('Helvetica')
@@ -271,13 +271,13 @@ export const downloadShoppingListPDF = async (req, res, next) => {
                 doc.moveDown(0.35);
             });
 
-            // Spacing between categories (skip after last)
+            
             if (catIndex < categories.length - 1) {
                 doc.moveDown(0.6);
             }
         });
 
-        // ── Footer ──
+        
         doc.moveDown(1.5)
             .moveTo(50, doc.y)
             .lineTo(545, doc.y)

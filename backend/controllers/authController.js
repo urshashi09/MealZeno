@@ -106,7 +106,7 @@ export const requestPasswordReset = async (req, res,next) => {
             });
         }
 
-        // Here you would generate a password reset token and send an email with the reset link. For simplicity, we'll just return a success message.
+        
         res.status(200).json({ 
             message: 'Password reset instructions sent to your email' 
         });
@@ -124,7 +124,7 @@ export const resetPassword = async (req, res,next) => {
             });
         }
 
-        // Here you would verify the token and extract the user ID. For simplicity, we'll assume the token is valid and contains the user ID.
+        
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const userId = decoded.id;
         await user.updatePassword(userId, newPassword);

@@ -62,7 +62,7 @@ class pantryItem{
         const params = [userId];
         let paramCount= 1
 
-        // Apply filters if provided
+        
         if (filters.category) {
             paramCount++;
             query += ` AND category = $${paramCount}`;
