@@ -2,7 +2,7 @@
 
 MealZeno is a sophisticated, full-stack web application designed to eliminate kitchen indecision and food waste. By leveraging state-of-the-art Generative AI, MealZeno transforms your existing pantry inventory into personalized, delicious recipes, while helping you organize your culinary life through smart meal planning and automated shopping lists.
 
-![MealZeno Dashboard](https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=2000)
+
 
 ## Key Features
 
@@ -14,26 +14,21 @@ MealZeno is a sophisticated, full-stack web application designed to eliminate ki
 
 ### Smart Meal Planner
 *   **Weekly Scheduling**: Interactive calendar to plan breakfast, lunch, and dinner.
-*   **Custom Notes**: Add restaurant nights or quick favorites alongside AI recipes.
+*   **Custom Meals**: Add restaurant nights or quick favorites alongside AI generated recipes into your calender.
 *   **Nutrition Tracking**: Monitor your weekly culinary balance at a glance.
 
 ### Pantry & Inventory Management
-*   **Real-time Tracking**: Keep a digital record of what's in your kitchen.
-*   **Smart Suggestions**: Get recipe ideas based specifically on what's about to expire or what you have in abundance.
+*   **Real-time Tracking**: Keep a digital record of what's in your kitchen. Get warnings based on items expiring or items running low.
+*   **Smart Suggestions**: Get recipe ideas based specifically on what's in your pantry right now. 
 
 ### Automated Shopping Lists
-*   **One-Click Generation**: Automatically compile missing ingredients from your meal plan into a sorted shopping list.
+*   **One-Click Generation**: Generate beautifully formatted PDFs of your shopping items in one click.
 *   **Sync Across Devices**: Access your list on your phone while at the grocery store.
 
 ### Smart User Profiles & Preferences
 *   **Personalized Culinary Profile**: Set your dietary preferences (Vegetarian, Vegan, Keto, etc.) and favorite cuisines to influence every AI generation.
 *   **Safety First (Allergy Protection)**: Define your allergies once, and MealZeno will automatically ensure all generated recipes are safe for you and your family.
 *   **Measurement Sync**: Choose between Metric and Imperial units, which are reflected across all recipes and the shopping list.
-
-### Premium Design System
-*   **Material Design 3**: Built with a custom "Stitch UI" design language.
-*   **Aesthetic Typography**: Optimized for readability with *Epilogue* (Headlines) and *Be Vietnam Pro* (Body).
-*   **Dynamic Visuals**: Glassmorphism effects, smooth micro-animations, and a curated color palette (Rust, Purple, Emerald).
 
 ---
 
@@ -70,7 +65,7 @@ MealZeno is a sophisticated, full-stack web application designed to eliminate ki
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/yourusername/mealzeno.git
+    git clone (https://github.com/urshashi09/Mealzeno-.git)
     cd mealzeno
     ```
 
@@ -115,10 +110,6 @@ npm run dev
 cd frontend
 npm run dev
 ```
-
-The app will be available at `http://localhost:5173` (or the next available port).
-
----
 
 ## API Security & Rate Limiting
 
