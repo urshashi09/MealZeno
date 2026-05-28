@@ -47,8 +47,8 @@ const extractJsonText = (text) => {
 const GROQ_MODELS = [
     "llama-3.3-70b-versatile",
     "llama-3.1-70b-versatile",
-    "llama-4-scout",
-    "qwen-3-32b",
+    "deepseek-r1-distill-llama-70b",
+    "qwen-2.5-coder-32b",
     "mixtral-8x7b-32768"
 ];
 
