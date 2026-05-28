@@ -17,7 +17,6 @@ const Landing = () => {
                     <div className="text-2xl font-black text-[#F45B00] tracking-tighter font-headline-md">MEALZENO</div>
                     <nav className="hidden md:flex gap-8 items-center">
                         <a className="text-[#F45B00] border-b-2 border-[#F45B00] pb-1 font-headline-md text-sm font-bold tracking-tight" href="#features">Features</a>
-                        <a className="text-slate-600 hover:text-[#F45B00] transition-colors font-headline-md text-sm font-bold tracking-tight" href="#how-it-works">How it Works</a>
                         <Link className="text-slate-600 hover:text-[#F45B00] transition-colors font-headline-md text-sm font-bold tracking-tight" to="/login">Login</Link>
                         
                     </nav>

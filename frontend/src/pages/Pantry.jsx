@@ -15,6 +15,7 @@ const Pantry = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [expiringItems, setExpiringItems] = useState([]);
+    const [showOnlyExpiring, setShowOnlyExpiring] = useState(false);
     const [loading, setLoading] = useState(true);
 
     const fetchPantryItems = async () => {
@@ -52,12 +53,14 @@ const Pantry = () => {
             );
         }
 
-        if (selectedCategory !== 'All') {
+        if (showOnlyExpiring) {
+            filtered = filtered.filter(item => expiringItems.some(exp => exp.id === item.id));
+        } else if (selectedCategory !== 'All') {
             filtered = filtered.filter(item => item.category === selectedCategory);
         }
 
         return filtered;
-    }, [items, searchQuery, selectedCategory]);
+    }, [items, searchQuery, selectedCategory, showOnlyExpiring, expiringItems]);
 
     const handleDelete = async (id) => {
         if (!confirm('Are you sure you want to delete this item?')) return;
@@ -119,7 +122,15 @@ const Pantry = () => {
                             <p className="font-bold text-sm">Items Expiring Soon</p>
                             <p className="text-sm">You have {expiringItems.length} items reaching their expiration date within the next 7 days.</p>
                         </div>
-                        <button className="text-sm font-bold underline hover:no-underline hidden sm:block">View All</button>
+                        <button 
+                            onClick={() => {
+                                setShowOnlyExpiring(true);
+                                setSelectedCategory('All');
+                            }}
+                            className="text-sm font-bold underline hover:no-underline hidden sm:block"
+                        >
+                            View All
+                        </button>
                     </div>
                 )}
 
@@ -127,19 +138,42 @@ const Pantry = () => {
                 <div className="mb-10">
                     <div className="flex flex-wrap gap-2 mb-6">
                         <button
-                            onClick={() => setSelectedCategory('All')}
-                            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${selectedCategory === 'All'
+                            onClick={() => {
+                                setSelectedCategory('All');
+                                setShowOnlyExpiring(false);
+                            }}
+                            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${selectedCategory === 'All' && !showOnlyExpiring
                                     ? 'bg-[#F45B00] text-white shadow-md'
                                     : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
                                 }`}
                         >
                             All
                         </button>
+
+                        {expiringItems.length > 0 && (
+                            <button
+                                onClick={() => {
+                                    setShowOnlyExpiring(true);
+                                    setSelectedCategory('All');
+                                }}
+                                className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center space-x-1.5 ${showOnlyExpiring
+                                        ? 'bg-amber-500 text-white shadow-md'
+                                        : 'bg-amber-50 border border-amber-200 text-amber-700 hover:bg-amber-100'
+                                    }`}
+                            >
+                                <span className="material-symbols-outlined text-xs">warning</span>
+                                <span>Expiring Soon ({expiringItems.length})</span>
+                            </button>
+                        )}
+
                         {CATEGORIES.map(category => (
                             <button
                                 key={category}
-                                onClick={() => setSelectedCategory(category)}
-                                className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${selectedCategory === category
+                                onClick={() => {
+                                    setSelectedCategory(category);
+                                    setShowOnlyExpiring(false);
+                                }}
+                                className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${selectedCategory === category && !showOnlyExpiring
                                         ? 'bg-[#F45B00] text-white shadow-md'
                                         : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
                                     }`}
