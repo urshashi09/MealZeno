@@ -95,8 +95,8 @@ const Navbar = () => {
             </header>
 
             {/* Mobile Bottom Navigation */}
-            <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white/90 backdrop-blur-md flex justify-around items-center px-4 pb-safe z-50 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] border-t border-zinc-200">
-                {navLinks.slice(0, 5).map((link) => {
+            <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white/90 backdrop-blur-md flex justify-around items-center px-2 pb-safe z-50 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] border-t border-zinc-200">
+                {navLinks.map((link) => {
                     const isActive = location.pathname === link.to;
                     const icons = {
                         '/dashboard': 'dashboard',
@@ -115,7 +115,7 @@ const Navbar = () => {
                             }`}
                         >
                             <span className="material-symbols-outlined text-2xl">{icons[link.to]}</span>
-                            <span className="text-[10px] font-bold uppercase tracking-wider">{link.label === 'Shopping' ? 'List' : link.label === 'Meal Plan' ? 'Plan' : link.label}</span>
+                            <span className="text-[10px] font-bold uppercase tracking-wider">{link.label === 'Shopping' ? 'Cart' : link.label === 'Meal Plan' ? 'Plan' : link.label}</span>
                         </Link>
                     );
                 })}
